@@ -24,8 +24,8 @@ manager:
     blunoled:
       args:
         devices:
-          greenled: 50:65:83:6F:54:7F
+          greenled: 50:65:83:6F:54:7F            # The Mac address of the Bluno Beetle LED
         topic_prefix: blunoled/bathroom
         state_topic_prefix: blunoled/bathroom    # MQTT publish topic to Home Assistant
       topic_subscription: blunoled/+/+/set
-      update_interval: 30   # Update LED state per 30 seconds
+      update_interval: 30                        # Update LED state per 30 seconds

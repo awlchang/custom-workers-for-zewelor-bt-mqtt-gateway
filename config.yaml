@@ -29,3 +29,16 @@ manager:
         state_topic_prefix: blunoled/bathroom    # MQTT publish topic to Home Assistant
       topic_subscription: blunoled/+/+/set
       update_interval: 30                        # Update LED state per 30 seconds
+    nteumm:
+      args:
+        autodiscovery_prefix: homeassistant
+        # topic_prefix: nteumm
+        devices:
+          nteumm:
+            name: Nteumm
+            discovery_topic: nteumm/tag_scanned
+            discovery_value_template: "{{ value_json.Nteumm.UID }}"
+          nteumm2:
+            name: Nteumm2
+            discovery_topic: nteumm2/tag_scanned
+            discovery_value_template: "{{ value_json.Nteumm2.UID }}"

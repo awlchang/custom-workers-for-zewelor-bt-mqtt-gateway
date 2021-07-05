@@ -1,8 +1,8 @@
 mqtt:
   host: 127.0.0.1
   port: 1883
-  #username: user
-  #password: password
+  username: mqtt-user
+  password: RCSL-2018
   #ca_cert: /etc/ssl/certs/ca-certificates.crt # Uncomment to enable MQTT TLS, update path to appropriate location.
   #ca_verify: False              # Verify TLS certificate chain and host, disable for testing with self-signed certificates, default to True
   #topic_prefix: hostname         # All messages will have that prefix added, remove if you dont need this.
@@ -12,7 +12,7 @@ mqtt:
 manager:
   sensor_config:
     topic: homeassistant
-    retain: true
+    retain: false
   topic_subscription:
     update_all:
       topic: homeassistant/status
@@ -29,6 +29,20 @@ manager:
         state_topic_prefix: blunoled/bathroom    # MQTT publish topic to Home Assistant
       topic_subscription: blunoled/+/+/set
       update_interval: 30                        # Update LED state per 30 seconds
+    blunonfc:
+      args:
+        devices:
+          nfcreader:
+            name: PN532
+            mac: C4:BE:84:23:B4:04            # The Mac address of the Bluno Beetle NFC
+            tag_scanned_topic: pn532/tag_scanned
+            discovery_value_template: "{{ value_json.PN532.UID }}"    # MQTT publish topic to Home Assistant
+          nfcreader2:
+            name: PN5322
+            mac: C8:DF:84:FE:4F:45            # The Mac address of the Bluno Beetle NFC
+            tag_scanned_topic: pn5322/tag_scanned
+            discovery_value_template: "{{ value_json.PN5322.UID }}"    # MQTT publish topic to Home Assistant
+      # update_interval: 30                        # Update LED state per 30 seconds
     nteumm:
       args:
         autodiscovery_prefix: homeassistant

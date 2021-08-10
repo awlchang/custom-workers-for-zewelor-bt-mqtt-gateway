@@ -56,3 +56,11 @@ manager:
             name: Nteumm2
             discovery_topic: nteumm2/tag_scanned
             discovery_value_template: "{{ value_json.Nteumm2.UID }}"
+          nteumm3:
+            name: Nteumm3
+            discovery_topic: nteumm3/tag_scanned
+            discovery_value_template: "{{ value_json.Nteumm3.UID }}"
+          nteumm4:
+            name: Nteumm4
+            discovery_topic: nteumm4/tag_scanned
+            discovery_value_template: "{{ value_json.Nteumm4.UID }}"
